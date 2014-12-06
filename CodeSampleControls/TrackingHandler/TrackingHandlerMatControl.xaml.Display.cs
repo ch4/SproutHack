@@ -33,6 +33,7 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
         {
             App.ClearErrorStatus();
             //horizontalWindow = new HorizontalWindow();
+            horizontalWindow.GridMat.Children.Clear();
             try
             {
                 DataContext.CanCapture = false;
@@ -96,22 +97,26 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
                                             boundary: pic.PhysicalBoundaries.ToScreenCoordinates(mat),
                                             name: "Object 1")));
 
-                            Image img = new Image();
-                            img.Source = picture.Children.First().Image;
-
-                            Rect temp = picture.PhysicalBoundaries.ToScreenCoordinates(mat);
-
-                            Canvas cv = new Canvas();
-                            cv.RenderTransform = new ScaleTransform(1, 1, temp.X, temp.Y);
-                            cv.Children.Add(img);
-
-                            horizontalWindow.GridMat.Children.Add(cv);
-
                             // Draw extracted pictures and their outlines.
                             DataContext.Root = root;
                             foreach (var item in combolist)
                             {
                                 DataContext.ItemCollection.Add(item);
+
+                                Image img = new Image();
+                                img.Source = item.Image;
+                                img.IsManipulationEnabled = true;
+                                //img.RenderTransform = new ScaleTransform(item.OutlineScale.X, item.OutlineScale.Y, item.Boundary.X, item.Boundary.Y);
+                                img.RenderTransform = new MatrixTransform();
+
+                                //Canvas cv = new Canvas();
+                                //cv.Height = img.Source.Height;
+                                //cv.Width = img.Source.Width;
+                                //cv.RenderTransform = new ScaleTransform(item.OutlineScale.X, item.OutlineScale.Y, item.Boundary.X, item.Boundary.Y);
+                                //cv.Children.Add(img);
+
+
+                                horizontalWindow.GridMat.Children.Add(img);
                             }
                             
                             this.StartButton.Opacity = 100;

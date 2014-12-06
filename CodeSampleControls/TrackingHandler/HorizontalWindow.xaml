@@ -6,7 +6,22 @@
         xmlns:trackingHandler="clr-namespace:WpfCsSample.CodeSampleControls.TrackingHandler"
         mc:Ignorable="d" 
         d:DataContext="{d:DesignInstance Type=trackingHandler:TrackingHandlerViewModel,IsDesignTimeCreatable=True}"
-        Title="Horizontal (Mat) Window" WindowStyle="None" ShowInTaskbar="True">
+        Title="Horizontal (Mat) Window" WindowStyle="None" ShowInTaskbar="True"
+        ManipulationStarting="Window_ManipulationStarting"
+        ManipulationDelta="Window_ManipulationDelta"
+        ManipulationInertiaStarting="Window_InertiaStarting">
+    <Window.Resources>
+
+        <!--The movement, rotation, and size of the Rectangle is 
+        specified by its RenderTransform.-->
+        <MatrixTransform x:Key="InitialMatrixTransform">
+            <MatrixTransform.Matrix>
+                <Matrix OffsetX="200" OffsetY="200"/>
+            </MatrixTransform.Matrix>
+        </MatrixTransform>
+
+    </Window.Resources>
+    
     <Grid Name="GridMat">
         
     </Grid>
