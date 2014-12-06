@@ -39,9 +39,6 @@
     <ApplicationIcon>sprout_blue.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HP.PC.Presentation, Version=1.0.3.1046, Culture=neutral, PublicKeyToken=5da06ecc02db83d6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -316,6 +313,9 @@
     <Resource Include="AppAssets\Switch DA.png" />
     <Resource Include="AppAssets\Switch IN.png" />
     <Resource Include="AppAssets\X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="HP.PC.Presentation, PublicKeyToken=5da06ecc02db83d6" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="sprout_blue_64x64.png">

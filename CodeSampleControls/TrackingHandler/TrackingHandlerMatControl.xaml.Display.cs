@@ -18,13 +18,13 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
     {
         public int Order { get { return 13; } }
         public string Title { get { return "Object Tracking"; } }
-        public string Description { get { return "This sample demonstrates how to track 2D objects. Place a 2D object such as a postcard or photograph on the touch mat, and then tap Capture. Tap Accept to accept the capture, and then move the object to observe object tracking. Click Stop to stop object tracking."; } }
+        public string Description { get { return "This sample demonstrates how to track 2D objects. Place one or more 2D objects such as postcards or photographs on the touch mat, and then tap Capture. Edit the object names, and then tap Start. Move the objects on and above the mat to observe object tracking. Tap Stop to stop object tracking."; } }
 
         private IPcLink sdk;
         private IPcObjectTrackingHandler trackingHandler;
         IPcSpecification spec;
 
-        private HorizontalWindow horizontalWindow;
+        private HorizontalWindow horizontalWindow = new HorizontalWindow();
 
         private Timer _timer;
         private DateTime _trackingTimeStamp;
@@ -32,7 +32,7 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
         private async void PerformCapture_Click(object sender, RoutedEventArgs e)
         {
             App.ClearErrorStatus();
-            horizontalWindow = new HorizontalWindow();
+            //horizontalWindow = new HorizontalWindow();
             try
             {
                 DataContext.CanCapture = false;
@@ -58,7 +58,7 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
                         using (var moment = await sdk.CaptureMomentAsync())
                         {
                             // Not needed any more
-                            horizontalWindow.Hide();
+                            //horizontalWindow.Hide();
 
                             // Extract the top-level picture and child images.
                             var picture = await sdk.ExtractPictureAsync(moment);
@@ -96,6 +96,17 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
                                             boundary: pic.PhysicalBoundaries.ToScreenCoordinates(mat),
                                             name: "Object 1")));
 
+                            Image img = new Image();
+                            img.Source = picture.Children.First().Image;
+
+                            Rect temp = picture.PhysicalBoundaries.ToScreenCoordinates(mat);
+
+                            Canvas cv = new Canvas();
+                            cv.RenderTransform = new ScaleTransform(1, 1, temp.X, temp.Y);
+                            cv.Children.Add(img);
+
+                            horizontalWindow.GridMat.Children.Add(cv);
+
                             // Draw extracted pictures and their outlines.
                             DataContext.Root = root;
                             foreach (var item in combolist)
@@ -121,7 +132,7 @@ namespace WpfCsSample.CodeSampleControls.TrackingHandler
             }
             finally
             {
-                horizontalWindow.Close();
+                //horizontalWindow.Close();
                 DataContext.CanCapture = true;
             }
         }
