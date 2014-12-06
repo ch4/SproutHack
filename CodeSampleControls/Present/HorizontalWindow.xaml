@@ -1,0 +1,123 @@
+﻿<Window x:Class="WpfCsSample.CodeSampleControls.Present.HorizontalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Horizontal (Mat) Window" WindowStyle="None" ShowInTaskbar="True" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="keyText" FontSize="50" Text="Sample Touch Mat Window" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}" x:Key="WhiteKeyStyle">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Grid.Row" Value="0"/>
+                    <Setter Property="Grid.RowSpan" Value="2"/>
+                    <Setter Property="Grid.ColumnSpan" Value="2"/>
+                    <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
+                    <!--<Setter Property="Focusable" Value="False"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />-->
+                    <EventSetter Event="TouchEnter" Handler="KeyTouch_Enter"/>
+                    <EventSetter Event="TouchLeave" Handler="KeyTouch_Leave"/>
+                </Style>
+                <Style TargetType="{x:Type Button}" x:Key="BlackKeyStyle">
+                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Grid.Row" Value="0"/>
+                    <Setter Property="Grid.ColumnSpan" Value="2"/>
+                    <Setter Property="Margin" Value="5,0"/>
+                    <Setter Property="Focusable" Value="False"/>
+                    <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
+                    <EventSetter Event="TouchEnter" Handler="KeyTouch_Enter"/>
+                    <EventSetter Event="TouchLeave" Handler="KeyTouch_Leave"/>
+                </Style>
+            </Grid.Resources>
+            <Button Tag="C1" Grid.Column="0" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="D1" Grid.Column="2" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="E1" Grid.Column="4" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="F1" Grid.Column="6" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="G1" Grid.Column="8" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="A1" Grid.Column="10" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="B1" Grid.Column="12" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="C2" Grid.Column="14" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="D2" Grid.Column="16" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="E2" Grid.Column="18" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="F2" Grid.Column="20" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="G2" Grid.Column="22" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="A2" Grid.Column="24" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="B2" Grid.Column="26" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="C3" Grid.Column="28" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="D3" Grid.Column="30" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="E3" Grid.Column="32" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="F3" Grid.Column="34" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="G3" Grid.Column="36" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="A3" Grid.Column="38" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="B3" Grid.Column="40" Style="{StaticResource WhiteKeyStyle}"/>
+            <Button Tag="C1#" Grid.Column="1" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="D1#" Grid.Column="3" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="F1#" Grid.Column="7" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="G1#" Grid.Column="9" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="A1#" Grid.Column="11" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="C2#" Grid.Column="15" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="D2#" Grid.Column="17" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="F2#" Grid.Column="21" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="G2#" Grid.Column="23" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="A2#" Grid.Column="25" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="C3#" Grid.Column="29" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="D3#" Grid.Column="31" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="F3#" Grid.Column="35" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="G3#" Grid.Column="37" Style="{StaticResource BlackKeyStyle}"/>
+            <Button Tag="A3#" Grid.Column="39" Style="{StaticResource BlackKeyStyle}"/>
+        </Grid>
+    </Grid>
+</Window>

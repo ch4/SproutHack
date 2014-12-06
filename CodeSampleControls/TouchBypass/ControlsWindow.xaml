@@ -1,0 +1,69 @@
+﻿<Window x:Class="WpfCsSample.CodeSampleControls.TouchBypass.ControlsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="clr-namespace:WpfCsSample.CodeSampleControls.TouchBypass"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=tb:TouchBypassViewModel, IsDesignTimeCreatable=True}"
+        Height="768"
+        Width="1024"
+        ResizeMode="NoResize"
+        Topmost="True"
+        Background="White"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        Title="Input Layer Window"
+        Visibility="{Binding IsMatAvailable, Converter={StaticResource BooleanToVisibilityConverter}}"
+        >
+    <Window.Resources>
+        <Style x:Key="CircleButton" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border>
+                            <Grid>
+                                <Ellipse Fill="{TemplateBinding Background}"/>
+                                <Ellipse>
+                                    <Ellipse.Fill>
+                                        <RadialGradientBrush>
+                                            <GradientStop Offset="0.0" Color="#00000000"/>
+                                            <GradientStop Offset="0.8" Color="#00000000"/>
+                                            <GradientStop Offset="1.0" Color="#80000000"/>
+                                        </RadialGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Ellipse Margin="10">
+                                    <Ellipse.Fill>
+                                        <LinearGradientBrush >
+                                            <GradientStop Offset="0" Color="#50FFFFFF"/>
+                                            <GradientStop Offset="0.5" Color="#00FFFFFF"/>
+                                            <GradientStop Offset="1" Color="#50FFFFFF"/>
+                                        </LinearGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Canvas>
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_PRIOR}" Content="Page Up" Canvas.Left="238" Canvas.Top="356" Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingBlue}"/>
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_NEXT}" Content="Page Down" Canvas.Left="238" Canvas.Top="556"  Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingBlue}" />
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_HOME}" Content="Home" Canvas.Left="138" Canvas.Top="456" Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingBlue}" />
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_END}" Content="End" Canvas.Left="338" Canvas.Top="456" Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingBlue}" />
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_UP}" Content="Up" Canvas.Left="638" Canvas.Top="356" Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingRed}"/>
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_DOWN}" Content="Down" Canvas.Left="638" Canvas.Top="556"  Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingRed}" />
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_LEFT}" Content="Left" Canvas.Left="538" Canvas.Top="456" Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingRed}" />
+            <Button Command="{Binding ControllerCommand}" CommandParameter="{x:Static tb:TouchBypassViewModel.VK_RIGHT}" Content="Right" Canvas.Left="738" Canvas.Top="456" Style="{StaticResource CircleButton}" Background="{StaticResource HPBrandingRed}" />
+        </Canvas>
+    </Grid>
+</Window>

@@ -1,0 +1,128 @@
+﻿<UserControl x:Class="WpfCsSample.CodeSampleControls.BitmapAssistedSegmentation.BitmapAssistedSegmentationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:bitmapAssistedSegmentation="clr-namespace:WpfCsSample.CodeSampleControls.BitmapAssistedSegmentation"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=bitmapAssistedSegmentation:BitmapAssistedSegmentationViewModel, IsDesignTimeCreatable=True}"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" IsEnabled="{Binding CanProcess}">
+
+            <Button Content="Choose Image" Margin="5" Width="180" Click="LoadImageFromDisk_Clicked" />
+
+            <TextBlock Text="Zoom:" VerticalAlignment="Center" />
+            <Slider Width="100" VerticalAlignment="Center" Minimum="0.2" Maximum="5.00" Interval="1"
+                    Value="{Binding ZoomFactor}"/>
+
+            <StackPanel>
+                <RadioButton Margin="10,5,5,5" VerticalAlignment="Center" Width="100"
+                         Foreground="#FFFE0202"
+                         Content="Exclusion"
+                         ToolTip="Click to draw background strokes"
+                         IsChecked="{Binding IsInclusionChecked, Converter={StaticResource InverseBooleanConverter}, Mode=TwoWay}"
+                         />
+
+                <RadioButton Margin="5" VerticalAlignment="Center" Width="100"
+                         Foreground="#FF2C9B0B"
+                         Content="Inclusion"
+                         ToolTip="Click to draw foreground strokes"
+                         IsChecked="{Binding IsInclusionChecked, Mode=TwoWay}"
+                         />
+            </StackPanel>
+
+            <Button Margin="5" Padding="5" Width="180"
+                    Content="Clear Strokes"
+                    Click="ClearStroke_Click"
+                   />
+
+            <Button Margin="5" Padding="5" Width="180"
+                    Content="Remove Background"
+                    Click="PerformAssistedSegmentation_Click"
+                    />
+
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Margin="20" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+
+            <Canvas MinWidth="{Binding ImageRect.Width}" MinHeight="{Binding ImageRect.Height}">
+                <Canvas.LayoutTransform>
+                    <ScaleTransform ScaleX="{Binding ZoomFactor}" ScaleY="{Binding ZoomFactor}" CenterX="0" CenterY="0"/>
+                </Canvas.LayoutTransform>
+
+                <Image x:Name="OriginalImage"
+                   Source="{Binding OriginalImage}"
+                   Width="{Binding ImageRect.Width}"
+                   Height="{Binding ImageRect.Height}"
+                   />
+
+                <Canvas x:Name="Shadow"
+                    Visibility="{Binding SegmentedItem, Converter={StaticResource NullToVisibilityConverter}}"
+                    Background="White" Opacity="0.8"
+                    Width="{Binding ImageRect.Width}"
+                    Height="{Binding ImageRect.Height}"
+                    />
+
+                <Image x:Name="SegmentedItemImage"
+                   Source="{Binding SegmentedItem.Image}"
+                   Canvas.Left="{Binding SegmentedItemRect.X}"
+                   Canvas.Top="{Binding SegmentedItemRect.Y}"
+                   Width="{Binding SegmentedItemRect.Width}"
+                   Height="{Binding SegmentedItemRect.Height}"
+                   />
+
+
+                <Path x:Name="SegmentedItemOutline"
+                      Data="{Binding SegmentedItem.Outline}"
+                      Stroke="Blue" StrokeThickness="4" Opacity="0.5"
+                      Canvas.Left="{Binding SegmentedItemRect.X}"
+                      Canvas.Top="{Binding SegmentedItemRect.Y}"
+                      >
+                    <Path.LayoutTransform>
+                        <ScaleTransform ScaleX="{Binding ImageScale.X}"
+                                        ScaleY="{Binding ImageScale.Y}"
+                                        CenterX="0"
+                                        CenterY="0"
+                                    />
+                    </Path.LayoutTransform>
+                </Path>
+
+                <InkCanvas x:Name="StrokeCanvas"
+                           Strokes="{Binding StrokeCollection}"
+                           Background="Transparent"
+                           Width="{Binding ImageRect.Width}"
+                           Height="{Binding ImageRect.Height}"
+                           IsEnabled="{Binding CanProcess}"
+                       >
+                    <InkCanvas.Style>
+                        <Style TargetType="{x:Type InkCanvas}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsInclusionChecked}" Value="True">
+                                    <Setter Property="DefaultDrawingAttributes">
+                                        <Setter.Value>
+                                            <DrawingAttributes FitToCurve="True" Color="#B052860C" Height="20" Width="20"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsInclusionChecked}" Value="False">
+                                    <Setter Property="DefaultDrawingAttributes">
+                                        <Setter.Value>
+                                            <DrawingAttributes FitToCurve="True" Color="#B0FE0202" Height="20" Width="20"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </InkCanvas.Style>
+                </InkCanvas>
+
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

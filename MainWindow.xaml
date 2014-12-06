@@ -1,0 +1,139 @@
+﻿<Window x:Class="WpfCsSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfCsSample="clr-namespace:WpfCsSample"
+        mc:Ignorable="d"
+        ShowInTaskbar="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource WindowBackgroundColor}"
+        WindowStyle="None"
+        Title="Sprout SDK Sample App for WPF"
+        Height="810" Width="1100"
+        Initialized="Window_Initialized"
+        d:DataContext="{d:DesignInstance Type=wpfCsSample:MainWindowViewModel, IsDesignTimeCreatable=True}"
+        >
+    <Window.Resources>
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="TabStripPlacement" Value="Left" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TabPanel IsItemsHost="True" />
+
+                            <Grid Grid.Column="1">
+                                <Border Background="{StaticResource PageBackgroundColor}" Padding="30">
+                                    <ContentPresenter
+                                          VerticalAlignment="Stretch"
+                                          HorizontalAlignment="Stretch"
+                                          ContentSource="SelectedContent"
+                                          Margin="0">
+                                        <ContentPresenter.ContentTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="{Binding Description}" Visibility="{Binding Description,Converter={StaticResource StringToVisibilityConverter}}"/>
+                                                    <Button Grid.Row="1" Content="Show Source Code" Click="SourceCode_Click" Visibility="{Binding HasSourceCodes,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                                    <ContentControl Grid.Row="2" Content="{Binding SampleContent}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ContentPresenter.ContentTemplate>
+                                    </ContentPresenter>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type TabItem}" x:Key="SampleTabItemStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid Name="Grid">
+                            <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <TextBlock Width="180" Padding="10, 10, 0, 10" Text="{Binding Title}" FontSize="13px" />
+                            </Grid>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Grid" Property="Background"
+                                Value="{StaticResource PageBackgroundColor}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Grid" Property="Background"
+                                Value="{StaticResource HighlightColor}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Foreground" Value="{StaticResource ButtonForegroundColor}"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Height="76" Background="{StaticResource DarkGreyBkg}" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="76" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="76" />
+            </Grid.ColumnDefinitions>
+            <Image Source="/AppAssets/sprout_blue_64x64.png" Height="64" Width="64">
+                <Image.RenderTransform>
+                    <TranslateTransform X="1" Y="1" />
+                </Image.RenderTransform>
+            </Image>
+            <!-- Add border to allow window dragging -->
+            <Border Grid.Column="1">
+                <TextBlock FontSize="25px" Margin="14, 0, 0, 0" FontFamily="{StaticResource HPSimplifiedRegular}" VerticalAlignment="Center" Text="Sprout SDK Sample App for WPF"/>
+            </Border>
+            <Button Grid.Column="2" Click="exitWindow_Click" Margin="0" Padding="0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="AppAssets/X.png" Width="28" Height="28" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <TabControl Grid.Row="1"
+                    ItemsSource="{Binding Tabs}"
+                    SelectedIndex="{Binding SelectedIndex}"
+                    ItemContainerStyle="{StaticResource SampleTabItemStyle}"
+                    SelectionChanged="SampleTab_SelectionChanged"
+                    TabStripPlacement="Left"
+                    >
+        </TabControl>
+
+        <Border Background="Red" Grid.Row="2" Visibility="{Binding ErrorStatus, Converter={StaticResource StringToVisibilityConverter}}">
+            <TextBlock TextWrapping="Wrap" Grid.Row="2" Margin="15,5" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Text="{Binding ErrorStatus}"/>
+        </Border>
+    </Grid>
+</Window>

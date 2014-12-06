@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="WpfCsSample.CodeSampleControls.InputLayer.InputLayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:inputLayer="clr-namespace:WpfCsSample.CodeSampleControls.InputLayer"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=inputLayer:InputLayerSampleViewModel, IsDesignTimeCreatable=True}"
+             d:DesignWidth="800"
+             d:DesignHeight="600"
+    >
+    <Grid IsEnabled="{Binding CanProcess}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="15" Content="Start Sample" Click="StartSampleClicked" IsEnabled="{Binding IsStarted, Converter={StaticResource InverseBooleanConverter}}"/>
+            <Button Margin="15" Content="Stop Sample" Click="StopSampleClicked" IsEnabled="{Binding IsStarted}"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="{Binding IsStarted}">
+            <StackPanel Orientation="Horizontal" IsEnabled="{Binding CanShowInputLayer}">
+                <Button Margin="15" Content="Show Keyboard" Click="ShowInputLayerClicked" IsEnabled="{Binding IsInputLayerVisible, Converter={StaticResource InverseBooleanConverter}}"/>
+                <Button Margin="15" Content="Hide Keyboard" Click="HideInputLayerClicked" IsEnabled="{Binding IsInputLayerVisible}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="WpfCsSample.CodeSampleControls.TouchBypass.ActionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tb="clr-namespace:WpfCsSample.CodeSampleControls.TouchBypass"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=tb:TouchBypassViewModel, IsDesignTimeCreatable=True}"
+             d:DesignWidth="800"
+             d:DesignHeight="600"
+    >
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ScrollViewer}" />
+        <Style TargetType="{x:Type FlowDocument}">
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="PagePadding" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid IsEnabled="{Binding CanProcess}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="15" Content="Start Sample" Click="StartSampleClicked" IsEnabled="{Binding IsStarted, Converter={StaticResource InverseBooleanConverter}}"/>
+            <Button Margin="15" Content="Stop Sample" Click="StopSampleClicked" IsEnabled="{Binding IsStarted}"/>
+            <Grid Margin="15">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding State}" Visibility="{Binding IsStarted, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Visibility="{Binding IsStarted, Converter={StaticResource BooleanToVisibilityConverter}}" IsEnabled="{Binding IsMatAvailable}">
+            <RichTextBox x:Name="LoremIpsumTextBox" FontSize="24" FontFamily="Lucida Console">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </Run>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </Run>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </Run>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </Run>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </Run>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
+    </Grid>
+</UserControl>

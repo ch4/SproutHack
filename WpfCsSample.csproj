@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF7E99DD-00A4-4756-BC70-E38D653E224D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WpfCsSample</RootNamespace>
+    <AssemblyName>WpfCsSample</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>$(SolutionDir)Output\$(Platform)\$(Configuration)\$(AssemblyName)</OutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)Int\$(Platform)\$(Configuration)\$(AssemblyName)</BaseIntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>$(SolutionDir)Output\$(Platform)\$(Configuration)\$(AssemblyName)</OutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)Int\$(Platform)\$(Configuration)\$(AssemblyName)</BaseIntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sprout_blue.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HP.PC.Presentation, Version=1.0.3.1046, Culture=neutral, PublicKeyToken=5da06ecc02db83d6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyCopyrights.cs" />
+    <Compile Include="AssemblyVersion.cs" />
+    <Compile Include="CodeSampleControls\BitmapAssistedSegmentation\BitmapAssistedSegmentationViewModel.cs" />
+    <Compile Include="CodeSampleControls\CaptureAudio\AudibleCaptureControl.xaml.cs">
+      <DependentUpon>AudibleCaptureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\CaptureAudio\AudibleCaptureControl.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\CaptureAudio\AudibleCaptureMatViewModel.cs" />
+    <Compile Include="CodeSampleControls\Classification\ClassificationObject.cs" />
+    <Compile Include="CodeSampleControls\Classification\ClassificationViewModel.cs" />
+    <Compile Include="CodeSampleControls\InputLayer\HorizontalWindow.xaml.cs">
+      <DependentUpon>HorizontalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\OCR\CapturedDataImage.cs" />
+    <Compile Include="CodeSampleControls\OCR\OCRMatControl.xaml.cs">
+      <DependentUpon>OCRMatControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\OCR\OCRMatControl.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\OCR\OCRViewModel.cs" />
+    <Compile Include="CodeSampleControls\TouchBypass\ActionsControl.xaml.cs">
+      <DependentUpon>ActionsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\TouchBypass\ControlsWindow.xaml.cs">
+      <DependentUpon>ControlsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\TouchBypass\LambdaCommand.cs" />
+    <Compile Include="CodeSampleControls\TouchBypass\TouchBypassViewModel.cs" />
+    <Compile Include="CodeSampleControls\TrackingHandler\HorizontalWindow.xaml.cs">
+      <DependentUpon>HorizontalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\TrackingHandler\TrackingHandlerDataObject.cs" />
+    <Compile Include="CodeSampleControls\TrackingHandler\TrackingHandlerMatControl.xaml.cs">
+      <DependentUpon>TrackingHandlerMatControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\TrackingHandler\TrackingHandlerMatControl.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\TrackingHandler\TrackingHandlerViewModel.cs" />
+    <Compile Include="Converters\FlowDocumentConverter.cs" />
+    <Compile Include="HorizontalWindow.xaml.cs">
+      <DependentUpon>HorizontalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\BitmapAssistedSegmentation\SegmentedDataObject.cs" />
+    <Compile Include="CodeSampleControls\InputLayer\InputLayerControl.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\InputLayer\InputLayerSampleViewModel.cs" />
+    <Compile Include="CodeSampleControls\Screens\ScreenSampleViewModel.cs" />
+    <Compile Include="CodeSampleControls\Segmentation\AssistedSegmentationController.Display.cs" />
+    <Compile Include="CodeSampleControls\Segmentation\AssistedSegmentationDataObject.cs" />
+    <Compile Include="CodeSampleControls\Segmentation\AssistedSegmentationPair.cs" />
+    <Compile Include="CodeSampleControls\Segmentation\AssistedSegmentationViewModel.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullToBooleanConverter.cs" />
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
+    <Compile Include="ICodeSampleControl.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeSampleControls\Classification\ClassificationTag.cs" />
+    <Compile Include="CodeSampleControls\Classification\ClassificationUserControl.xaml.cs">
+      <DependentUpon>ClassificationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Classification\ClassificationUserControl.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\Communications\Communications.xaml.cs">
+      <DependentUpon>Communications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Communications\Communications.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\Communications\CommunicationViewModel.cs" />
+    <Compile Include="CodeSampleControls\Communications\MessageViewModel.cs" />
+    <Compile Include="CodeSampleControls\InstantMoment\InstantCapturedDataObject.cs" />
+    <Compile Include="CodeSampleControls\InstantMoment\InstantCaptureControl.xaml.cs">
+      <DependentUpon>InstantCaptureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\InstantMoment\InstantCaptureControl.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\InstantMoment\InstantCaptureMatViewModel.cs" />
+    <Compile Include="CodeSampleControls\InputLayer\InputLayerControl.xaml.cs">
+      <DependentUpon>InputLayerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\OCR\CapturedDataText.cs" />
+    <Compile Include="CodeSampleControls\Segmentation\AssistedSegmentationControl.xaml.cs">
+      <DependentUpon>AssistedSegmentationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Present\HorizontalWindow.xaml.cs">
+      <DependentUpon>HorizontalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Present\Present.xaml.cs">
+      <DependentUpon>Present.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Present\Present.xaml.Display.cs">
+      <DependentUpon>Present.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Screens\ScreenSample.xaml.Display.cs" />
+    <Compile Include="CodeSampleControls\Screens\ScreenSample.xaml.cs">
+      <DependentUpon>ScreenSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Screens\ScreenTypeInfo.cs" />
+    <Compile Include="CodeSampleControls\BitmapAssistedSegmentation\BitmapAssistedSegmentationControl.xaml.cs">
+      <DependentUpon>BitmapAssistedSegmentationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\BitmapAssistedSegmentation\BitmapAssistedSegmentationControl.xaml.Display.cs" />
+    <Compile Include="BitmapExtension.cs" />
+    <Compile Include="CodeSampleControls\Versions\VersionSample.xaml.cs">
+      <DependentUpon>VersionSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeSampleControls\Versions\VersionSample.xaml.Display.cs" />
+    <Compile Include="SampleTabViewModel.cs" />
+    <Compile Include="SourcePreview\SourceCodeFormatter.cs" />
+    <Compile Include="SourcePreview\SourceView.xaml.cs">
+      <DependentUpon>SourceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SourcePreview\SourceViewModel.cs" />
+    <Compile Include="Welcome\WelcomeTab.xaml.cs">
+      <DependentUpon>WelcomeTab.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CodeSampleControls\CaptureAudio\AudibleCaptureControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\InputLayer\HorizontalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\OCR\OCRMatControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\TouchBypass\ActionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\TouchBypass\ControlsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\TrackingHandler\HorizontalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\TrackingHandler\TrackingHandlerMatControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HorizontalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\Classification\ClassificationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\Communications\Communications.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\InstantMoment\InstantCaptureControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\Segmentation\AssistedSegmentationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\InputLayer\InputLayerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\Present\HorizontalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\Present\Present.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeSampleControls\Screens\ScreenSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\BitmapAssistedSegmentation\BitmapAssistedSegmentationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CodeSampleControls\Versions\VersionSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Skins\Common.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Skins\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SourcePreview\SourceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Welcome\WelcomeTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\Fonts\HPSimplified_Bd.ttf" />
+    <Resource Include="AppAssets\Fonts\HPSimplified_BdIt.ttf" />
+    <Resource Include="AppAssets\Fonts\HPSimplified_It.ttf" />
+    <Resource Include="AppAssets\Fonts\HPSimplified_Lt.ttf" />
+    <Resource Include="AppAssets\Fonts\HPSimplified_LtIt.ttf" />
+    <Resource Include="AppAssets\Fonts\HPSimplified_Rg.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SegmentationImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\Desk Lamp AC.png" />
+    <Resource Include="AppAssets\Desk Lamp DA.png" />
+    <Resource Include="AppAssets\Desk Lamp IN.png" />
+    <Resource Include="AppAssets\hp_logo.png" />
+    <Resource Include="AppAssets\Mouse Restriction AC.png" />
+    <Resource Include="AppAssets\Mouse Restriction DA.png" />
+    <Resource Include="AppAssets\Mouse Restriction IN.png" />
+    <Resource Include="AppAssets\Notifications AC.png" />
+    <Resource Include="AppAssets\Notifications DA.png" />
+    <Resource Include="AppAssets\Notifications IN.png" />
+    <Resource Include="AppAssets\Projector AC.png" />
+    <Resource Include="AppAssets\Projector DA.png" />
+    <Resource Include="AppAssets\Projector IN.png" />
+    <Resource Include="AppAssets\Scroll Handle.png" />
+    <Resource Include="AppAssets\Scroll Track.png" />
+    <Resource Include="AppAssets\Shield.png" />
+    <Resource Include="AppAssets\Sound AC.png" />
+    <Resource Include="AppAssets\Sound DA.png" />
+    <Resource Include="AppAssets\Sound IN.png" />
+    <Resource Include="AppAssets\Switch AC.png" />
+    <Resource Include="AppAssets\Switch DA.png" />
+    <Resource Include="AppAssets\Switch IN.png" />
+    <Resource Include="AppAssets\X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sprout_blue_64x64.png">
+      <Link>AppAssets\sprout_blue_64x64.png</Link>
+    </Resource>
+    <Resource Include="sprout_blue.ico">
+      <Link>AppAssets\sprout_blue.ico</Link>
+    </Resource>
+    <EmbeddedResource Include="CodeSampleControls\CaptureAudio\capture.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="Embed_Sample_Code.targets" />
+</Project>

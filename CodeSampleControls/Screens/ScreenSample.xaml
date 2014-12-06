@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="WpfCsSample.CodeSampleControls.Screens.ScreenSample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:screens="clr-namespace:WpfCsSample.CodeSampleControls.Screens"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=screens:ScreenSampleViewModel,IsDesignTimeCreatable=True}"
+             >
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type screens:ScreenTypeInfo}" x:Key="ScreenTypeInfoTemplate">
+            <Border BorderThickness="2" TextElement.Foreground="Black" BorderBrush="DarkBlue"
+                    Width="{Binding Path=PixelExtent.Width}" 
+                    Height="{Binding Path=PixelExtent.Height}"
+                    >
+                <Viewbox>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="ID:" Margin="5,0" Foreground="Black"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=ScreenId}" ToolTip="{Binding Path=ScreenId}" FontWeight="SemiBold" Foreground="Black">
+                            <TextBlock.Resources>
+                                <Style TargetType="ToolTip">
+                                    <Setter Property="OverridesDefaultStyle" Value="true" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Setter Property="HasDropShadow" Value="True" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToolTip">
+                                                <Border Background="Gray" Padding="5,2">
+                                                    <ContentPresenter />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TextBlock.Resources>
+                        </TextBlock>
+
+                        <TextBlock Visibility="Collapsed" Grid.Row="1" Grid.Column="0" Text="Name:" Margin="5,0" Foreground="Black"/>
+                        <TextBlock Visibility="Collapsed" Grid.Row="1" Grid.Column="2" Text="{Binding Path=ScreenName}" FontWeight="SemiBold" Foreground="Black"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="H. PixelDensity:" Margin="5,0" Foreground="Black" />
+                        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Path=PixelDensity.X, StringFormat={}{0:0.00 dots/mm}}" FontWeight="SemiBold" Foreground="Black"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="V. PixelDensity:" Margin="5,0" Foreground="Black" />
+                        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Path=PixelDensity.Y, StringFormat={}{0:0.00 dots/mm}}" FontWeight="SemiBold" Foreground="Black"/>
+
+                        <TextBlock Visibility="Collapsed" Grid.Row="4" Grid.Column="0" Text="ScreenType:" Margin="5,0" Foreground="Black" />
+                        <TextBlock Visibility="Collapsed" Grid.Row="4" Grid.Column="2" Text="{Binding Path=ScreenType}" FontWeight="SemiBold" Foreground="Black"/>
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Work Area:" Margin="5,0" Foreground="Black" />
+                        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Path=PixelExtent}" FontWeight="SemiBold" Foreground="Black"/>
+
+                        <TextBlock Grid.Row="6" Grid.Column="0" Text="Offset:" Margin="5,0" Foreground="Black" />
+                        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding Path=Origin}" FontWeight="SemiBold" Foreground="Black"/>
+                    </Grid>
+                </Viewbox>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Display Screen Info" Click="UpdateScreenSpecification_Click" Width="200" Margin="5"/>
+        <Viewbox Grid.Row="1" Visibility="{Binding HasInfo, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <ListBox ItemsSource="{Binding Path=AvailableDisplays}" Margin="5" ItemTemplate="{StaticResource ScreenTypeInfoTemplate}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="{Binding CanvasSize.Width}" Height="{Binding CanvasSize.Height}" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Canvas.Left" Value="{Binding Path=Origin.X}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Path=Origin.Y}" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Viewbox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WpfCsSample.Welcome.WelcomeTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Orientation="Vertical">
+        <TextBlock TextWrapping="Wrap" Text="Welcome to the Sprout SDK Sample App for WPF."></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text=" "></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="This is a sample app for the Sprout Platform's WPF binding for apps that are written in CLR languages such as C#."></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="The goals of this sample app are to demonstrate use of Sprout SDK features and to present WPF and C# coding practices."></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text=" "></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="Use the tabbed menu to navigate through the features. Each feature page lets you view the source code for the feature."></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text=" "></TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="For more information about developing apps, see the Sprout Developer Guide. For more information about the APIs, see the Sprout SDK API Reference for the WPF Binding."></TextBlock>
+    </StackPanel>
+</UserControl>

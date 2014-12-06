@@ -1,0 +1,20 @@
+﻿WpfCsSample
+
+
+winexe
+C#
+.cs
+C:\ProgramData\Hewlett-Packard\Sprout\SDK\Sample Programs\WpfCsSample\Int\AnyCPU\Debug\WpfCsSample\Debug\
+WpfCsSample
+none
+false
+DEBUG;TRACE
+C:\ProgramData\Hewlett-Packard\Sprout\SDK\Sample Programs\WpfCsSample\App.xaml
+23-2115268231
+
+75453308506
+9-823496602
+CodeSampleControls\CaptureAudio\AudibleCaptureControl.xaml;CodeSampleControls\InputLayer\HorizontalWindow.xaml;CodeSampleControls\OCR\OCRMatControl.xaml;CodeSampleControls\TouchBypass\ActionsControl.xaml;CodeSampleControls\TouchBypass\ControlsWindow.xaml;CodeSampleControls\TrackingHandler\HorizontalWindow.xaml;CodeSampleControls\TrackingHandler\TrackingHandlerMatControl.xaml;HorizontalWindow.xaml;CodeSampleControls\Classification\ClassificationUserControl.xaml;CodeSampleControls\Communications\Communications.xaml;CodeSampleControls\InstantMoment\InstantCaptureControl.xaml;CodeSampleControls\Segmentation\AssistedSegmentationControl.xaml;CodeSampleControls\InputLayer\InputLayerControl.xaml;CodeSampleControls\Present\HorizontalWindow.xaml;CodeSampleControls\Present\Present.xaml;CodeSampleControls\Screens\ScreenSample.xaml;CodeSampleControls\BitmapAssistedSegmentation\BitmapAssistedSegmentationControl.xaml;CodeSampleControls\Versions\VersionSample.xaml;MainWindow.xaml;Skins\Common.xaml;Skins\Style.xaml;SourcePreview\SourceView.xaml;Welcome\WelcomeTab.xaml;
+
+False
+
